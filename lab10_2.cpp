@@ -17,8 +17,9 @@ int calScore(int x,int y,int z){
 	//Write the function to calculate the score with is the rightmost digit of summation of the scores from three cards.
 	//Return the score. 
 	int score ;
+	
 	score = x+y+z ;
-	while(score>=10){
+	if (score>=10){
 		score = score%10 ;
 	}
 	return score ;
@@ -30,7 +31,7 @@ int findYugiAction(int s){
 	else{
 		// If current score is 6,7,8, Yugi will draw with probability 69% and will stay with probability 31% 
 		// Write conditions here using random number 
-		int x =rand()%100 ;
+		int x =rand()%100+1 ;
 		if(x<69){
 			return 2;
 		}
@@ -91,7 +92,8 @@ int main(){
 	yugiAction = findYugiAction(yugiScore);
 	if(yugiAction == 1){
 		cout << "Yugi draws the 3rd card!!!\n";
-		cout << "Yugi's 3rd card: " << cardNames[yugiCards[1]] << "\n";
+		cout << "Yugi's 3rd card: " << cardNames[yugiCards[2]] << "\n";
+		
 		yugiScore = calScore(cardScores[yugiCards[0]],cardScores[yugiCards[1]],cardScores[yugiCards[2]]);
 		cout << "Yugi's new score: " << yugiScore << "\n";
 	}
